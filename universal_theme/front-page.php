@@ -113,6 +113,7 @@
         // получаем 7 постов
         'posts_per_page' => 7,
         'category__not_in' => 29,
+        'post__not_in' => array(83,80,77,74,71,68),
       ] );
 
       // проверяем, есть ли посты
@@ -229,6 +230,8 @@
     <?php get_sidebar();?>
   </div>
 </div>
+
+<!-- Секция расследование -->
 <?php		
 global $post;
 
@@ -241,13 +244,14 @@ if ( $query->have_posts() ) {
 	while ( $query->have_posts() ) {
 		$query->the_post();
 		?>
-		<section class="investigation" style="background: linear-gradient(0deg, rgba(64, 48, 61, 0.55), rgba(64, 48, 61, 0.55)), url(benjamin-lambert-KxdO8elL5_c-unsplash.jpg), url(<?php echo get_the_post_thumbnail_url() ?>) no-repeat center center">
-      <div class="container">
-        <h2 class="investigation-title"><?php the_title();?></h2>
-        <a href="<?php echo get_the_permalink();?>" class="more">Читать статью</a>
-      </div>
-    </section>
-		<?php 
+<section class="investigation"
+  style="background: linear-gradient(0deg, rgba(64, 48, 61, 0.55), rgba(64, 48, 61, 0.55)), url(benjamin-lambert-KxdO8elL5_c-unsplash.jpg), url(<?php echo get_the_post_thumbnail_url() ?>) no-repeat center center">
+  <div class="container">
+    <h2 class="investigation-title"><?php the_title();?></h2>
+    <a href="<?php echo get_the_permalink();?>" class="more">Читать статью</a>
+  </div>
+</section>
+<?php 
 	}
 } else {
 	// Постов не найдено
@@ -257,3 +261,59 @@ wp_reset_postdata(); // Сбрасываем $post
 ?>
 
 
+
+<!-- Секция с постами после расследования -->
+
+<section class="article-secondary">
+  <div class="container">
+    <ul class="article-secondary-list">
+      <?php
+        global $post;
+
+        $myposts = get_posts([ 
+          'numberposts' => 6,
+          'category_name' => 'news, opinions, hot, match',
+          'order' => 'ASC',
+        ]);
+
+        if( $myposts ){
+          foreach( $myposts as $post ){
+            setup_postdata( $post );
+            ?>
+      <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+      <li class="article-secondary-post">
+        <!-- <?php the_category();?> -->
+        <a class="article-secondary-post-permalink" href="<?php echo get_the_permalink();?>">
+          <div class="article-secondary-post-box">
+            <img src="<?php echo get_the_post_thumbnail_url()?>" alt="" class="article-secondary-post-img" width="336" height="195">
+            <div class="article-secondary-post-wrp">
+              <span class="article-secondary-post-category-name"><?php $category = get_the_category(); echo $category[0]->name; ?></span>
+              <h3 class="article-secondary-post-title"><?php echo mb_strimwidth(get_the_title(), 0, 68, '...');?></h3>
+              <p class="article-secondary-post-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...');?></p>
+              <div class="author-info">
+                <span class="date"><?php the_time( 'j F' )?></span>
+                <div class="comments">
+                  <img src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg' ?>" alt=""
+                    class="comments-icon">
+                  <span class="comments-counter"><?php comments_number('0', '1', '%');?></span>
+                </div>
+                <div class="likes">
+                  <img src="<?php echo get_template_directory_uri() . '/assets/images/heart-grey.svg'?>" alt=""
+                    class="likes-icon">
+                  <span class="likes-counter"><?php comments_number('0', '1', '%')?></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <?php 
+          } 
+        } else {
+          ?> <p>Постов нет</p> <?php
+        }
+        wp_reset_postdata(); // Сбрасываем $post
+        ?>
+    </ul>
+  </div>
+</section>

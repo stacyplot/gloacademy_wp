@@ -179,17 +179,6 @@ body {
   margin: 20px 0 50px 0;
   max-width: 570px;
 }
-.hero .left .more {
-  display: inline-block;
-  color: #ffffff;
-  padding: 10px 50px 10px 20px;
-  background-color: #4592FF;
-  border-radius: 20px;
-  text-decoration: none;
-  background-image: url("../images/arrow.svg");
-  background-repeat: no-repeat;
-  background-position: center right 20px;
-}
 .hero .right {
   flex-basis: 25%;
 }
@@ -242,6 +231,21 @@ body {
   line-height: 20px;
   font-weight: 400;
   margin: 8px 0 0 0;
+}
+
+.more {
+  display: inline-block;
+  color: #ffffff;
+  padding: 10px 50px 10px 20px;
+  background-color: #4592FF;
+  border-radius: 20px;
+  text-decoration: none;
+  background-image: url("../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center right 20px;
+}
+.more:visited, .more:focus, .more:hover {
+  color: #fff;
 }
 
 .article-list {
@@ -298,7 +302,7 @@ body {
 
 .article-grid {
   max-width: 850px;
-  margin: 30px 0;
+  margin: 30px 0 60px;
   padding: 0;
   list-style: none;
   display: grid;
@@ -533,6 +537,7 @@ body {
 
 .sidebar-front-page {
   margin: 30px 0 0 30px;
+  max-width: 263px;
 }
 
 .widget {
@@ -613,7 +618,7 @@ body {
   color: #262D33;
   text-align: center;
   text-transform: none;
-  padding-top: 35px;
+  padding-top: 30px;
   padding-bottom: 2px;
   border-bottom: none;
 }
@@ -625,8 +630,8 @@ body {
   background-color: #4267B2;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-facebook-icon {
   position: absolute;
@@ -642,8 +647,8 @@ body {
   background-color: #1DA1F2;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-twitter-icon {
   position: absolute;
@@ -663,8 +668,8 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f09433", endColorstr="#bc1888",GradientType=1 );
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-instagram-icon {
   position: absolute;
@@ -680,8 +685,8 @@ body {
   background-color: #FF0000;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-youtube-icon {
   position: absolute;
@@ -699,4 +704,15 @@ body {
 
 .investigation {
   padding: 50px 0 55px 0;
+  text-align: center;
+}
+.investigation-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  color: #fff;
+  max-width: 946px;
+  margin: auto;
+  margin: 0 auto 25px auto;
 }

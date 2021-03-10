@@ -1,0 +1,83 @@
+.article
+  &-secondary
+    margin-top: 60px
+    &-list
+      list-style: none
+      display: flex
+      flex-wrap: wrap
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-start
+      max-width: 848px
+      margin: 0
+      padding: 0
+    &-post
+      position: relative
+      &::after
+        content: ''
+        width: 94%
+        height: 1px
+        position: absolute
+        bottom: 0
+        left: 0
+        transform: translateX(3%)
+        background-color: #D9DADB
+      &:last-child
+        .article-secondary-post::after
+          height: 0
+      &:first-child a
+        border-top-left-radius: 10px
+        border-top-right-radius: 10px
+      &:last-child a
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
+      &-box
+        display: flex
+        align-items: flex-start
+        justify-content: space-between
+      &-permalink
+        display: block
+        background-color: #fff
+        padding: 25px
+        text-decoration: none
+
+      &-img
+        // width: 336px
+        // height: auto
+        object-fit: cover
+      &-wrp
+        margin-left: 25px
+      &-category-name
+        font-weight: 900
+        font-size: 12px
+        line-height: 15px
+        text-transform: uppercase
+        color: #6E99AE
+      &-title
+        font-family: "Roboto Slab", serif
+        font-style: normal
+        font-weight: bold
+        font-size: 20px
+        color: #262D33
+        margin-top: 15px
+        margin-bottom: 10px
+      &-excerpt
+        font-size: 14px
+        color: #4B5157
+        margin-bottom: 33px
+      .author-info
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        margin: 0
+        padding: 0
+        color: #939699
+        .date, .comments, .likes
+          display: flex
+          align-items: center
+          &:not(:last-child)
+            margin-right: 10px
+          &-counter
+            margin-left: 5px
+          &:hover
+            color: #939699

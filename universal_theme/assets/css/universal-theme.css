@@ -950,3 +950,147 @@ body {
   margin: auto;
   margin: 0 auto 25px auto;
 }
+
+.article-secondary {
+  margin-top: 60px;
+}
+
+.article-secondary-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  max-width: 848px;
+  margin: 0;
+  padding: 0;
+}
+
+.article-secondary-post {
+  position: relative;
+}
+
+.article-secondary-post::after {
+  content: '';
+  width: 94%;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateX(3%);
+          transform: translateX(3%);
+  background-color: #D9DADB;
+}
+
+.article-secondary-post:last-child .article-secondary-post::after {
+  height: 0;
+}
+
+.article-secondary-post:first-child a {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.article-secondary-post:last-child a {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.article-secondary-post-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.article-secondary-post-permalink {
+  display: block;
+  background-color: #fff;
+  padding: 25px;
+  text-decoration: none;
+}
+
+.article-secondary-post-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.article-secondary-post-wrp {
+  margin-left: 25px;
+}
+
+.article-secondary-post-category-name {
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #6E99AE;
+}
+
+.article-secondary-post-title {
+  font-family: "Roboto Slab", serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #262D33;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.article-secondary-post-excerpt {
+  font-size: 14px;
+  color: #4B5157;
+  margin-bottom: 33px;
+}
+
+.article-secondary-post .author-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  color: #939699;
+}
+
+.article-secondary-post .author-info .date, .article-secondary-post .author-info .comments, .article-secondary-post .author-info .likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.article-secondary-post .author-info .date:not(:last-child), .article-secondary-post .author-info .comments:not(:last-child), .article-secondary-post .author-info .likes:not(:last-child) {
+  margin-right: 10px;
+}
+
+.article-secondary-post .author-info .date-counter, .article-secondary-post .author-info .comments-counter, .article-secondary-post .author-info .likes-counter {
+  margin-left: 5px;
+}
+
+.article-secondary-post .author-info .date:hover, .article-secondary-post .author-info .comments:hover, .article-secondary-post .author-info .likes:hover {
+  color: #939699;
+}
