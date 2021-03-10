@@ -290,6 +290,12 @@ body {
   line-height: 20px;
 }
 
+.main-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .article-grid {
   max-width: 850px;
   margin: 30px 0;
@@ -523,4 +529,174 @@ body {
 }
 .article-grid-item-default .article-grid-excerpt {
   margin: 10px 0 auto 0;
+}
+
+.sidebar-front-page {
+  margin: 30px 0 0 30px;
+}
+
+.widget {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.widget-title {
+  padding: 20px 25px;
+  border-bottom: 1px solid #D9DADB;
+  font-size: 14px;
+  font-family: "Lato Black", sans-serif;
+  margin: 0;
+  text-transform: uppercase;
+}
+.widget-downloader {
+  background: #3BBDC4 url("../images/file.svg") no-repeat top 22px right 24px;
+  border-radius: 10px;
+  color: #fff;
+  padding: 25px 25px 55px 25px;
+  position: relative;
+}
+.widget-downloader .widget-title {
+  margin-top: 0;
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  padding: 0;
+  text-transform: none;
+}
+.widget-downloader .widget-link {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 12px 0 13px 0;
+  border-top: 1px solid #96E2E3;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Lato Black", sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.widget-downloader .widget-link-icon {
+  margin-right: 10px;
+}
+.widget-downloader .description {
+  color: #C1F4F5;
+  font-size: 14px;
+  margin: 0;
+}
+.widget .tagcloud {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 25px 25px 30px 25px;
+}
+.widget .tag-cloud-link {
+  color: #262D33;
+  font-weight: 900;
+  font-size: 14px;
+  text-transform: capitalize;
+  margin: 0 10px 15px 0;
+  text-decoration: none;
+  padding: 5px 15px;
+  border: 1px solid #D9DADB;
+  border-radius: 5px;
+}
+.widget-socials .widget-title {
+  font-size: 20px;
+  font-family: "Roboto Slab", serif;
+  color: #262D33;
+  text-align: center;
+  text-transform: none;
+  padding-top: 35px;
+  padding-bottom: 2px;
+  border-bottom: none;
+}
+.widget-socials .widget-facebook {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #4267B2;
+  text-decoration: none;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.widget-socials .widget-facebook-icon {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.widget-socials .widget-twitter {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #1DA1F2;
+  text-decoration: none;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.widget-socials .widget-twitter-icon {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.widget-socials .widget-instagram {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f09433", endColorstr="#bc1888",GradientType=1 );
+  text-decoration: none;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.widget-socials .widget-instagram-icon {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.widget-socials .widget-youtube {
+  display: block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #FF0000;
+  text-decoration: none;
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.widget-socials .widget-youtube-icon {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.widget-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  padding-bottom: 40px;
+}
+
+.investigation {
+  padding: 50px 0 55px 0;
 }

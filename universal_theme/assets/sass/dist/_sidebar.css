@@ -1,5 +1,6 @@
 .sidebar-front-page {
   margin: 30px 0 0 30px;
+  max-width: 263px;
 }
 
 .widget {
@@ -80,7 +81,7 @@
   color: #262D33;
   text-align: center;
   text-transform: none;
-  padding-top: 35px;
+  padding-top: 30px;
   padding-bottom: 2px;
   border-bottom: none;
 }
@@ -92,8 +93,8 @@
   background-color: #4267B2;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-facebook-icon {
   position: absolute;
@@ -109,8 +110,8 @@
   background-color: #1DA1F2;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-twitter-icon {
   position: absolute;
@@ -130,8 +131,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f09433", endColorstr="#bc1888",GradientType=1 );
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-instagram-icon {
   position: absolute;
@@ -147,8 +148,8 @@
   background-color: #FF0000;
   text-decoration: none;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .widget-socials .widget-youtube-icon {
   position: absolute;
