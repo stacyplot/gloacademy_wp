@@ -1,1 +1,0 @@
-# gloacademy_wp
