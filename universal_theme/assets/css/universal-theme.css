@@ -209,20 +209,6 @@ body {
   border-radius: 50%;
 }
 
-.hero .left .post-categories {
-  padding: 0;
-  margin: 0;
-}
-
-.hero .left .post-categories a {
-  color: #4592FF;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 12px;
-  line-height: 15px;
-  text-decoration: none;
-}
-
 .hero .left .post-text {
   position: relative;
   z-index: 2;
@@ -315,6 +301,59 @@ body {
 
 .more:visited, .more:focus, .more:hover {
   color: #fff;
+}
+
+.category-link {
+  color: #4592FF;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none;
+}
+
+.category-link:visited {
+  color: #4592FF;
+}
+
+.category-link.web-design {
+  color: #FFA34D;
+}
+
+.category-link.web-design:visited {
+  color: #FFA34D;
+}
+
+.category-link.css {
+  color: #3BBDC4;
+}
+
+.category-link.css:visited {
+  color: #3BBDC4;
+}
+
+.category-link.java-script {
+  color: #6E99AE;
+}
+
+.category-link.java-script:visited {
+  color: #6E99AE;
+}
+
+.category-link.html {
+  color: #AC8EE3;
+}
+
+.category-link.html:visited {
+  color: #AC8EE3;
+}
+
+.category-link.css {
+  color: #3DC47E;
+}
+
+.category-link.css:visited {
+  color: #3DC47E;
 }
 
 .article-list {
@@ -729,6 +768,10 @@ body {
   margin: 10px 0 auto 0;
 }
 
+body {
+  counter-reset: section;
+}
+
 .sidebar-front-page {
   margin: 30px 0 0 30px;
   max-width: 263px;
@@ -921,6 +964,57 @@ body {
           transform: translate(-50%);
 }
 
+.widget-recent-posts-wrapper {
+  padding: 0 25px 17px 25px;
+}
+
+.widget-recent-posts a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  position: relative;
+}
+
+.widget-recent-posts a:not(:last-child) {
+  border-bottom: 1px solid #D9DADB;
+}
+
+.widget-recent-posts a::before {
+  position: absolute;
+  right: 5px;
+  font-family: "Lato Black", sans-serif;
+  font-style: italic;
+  font-size: 70px;
+  color: #262D33;
+  opacity: 0.06;
+  counter-increment: section;
+  content: counter(section);
+}
+
+.widget-recent-posts img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.widget-recent-posts h4 {
+  font-size: 14px;
+  color: #4B5157;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.widget-recent-posts span {
+  font-size: 12px;
+  color: #939699;
+}
+
 .widget-wrp {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -951,8 +1045,16 @@ body {
   margin: 0 auto 25px auto;
 }
 
-.article-secondary {
-  margin-top: 60px;
+.article-secondary-boxwrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .article-secondary-list {
@@ -975,6 +1077,7 @@ body {
   max-width: 848px;
   margin: 0;
   padding: 0;
+  margin-top: 30px;
 }
 
 .article-secondary-post {
@@ -1007,7 +1110,7 @@ body {
   border-bottom-right-radius: 10px;
 }
 
-.article-secondary-post-box {
+.article-secondary-post-permalink {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1017,10 +1120,6 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.article-secondary-post-permalink {
-  display: block;
   background-color: #fff;
   padding: 25px;
   text-decoration: none;
@@ -1041,6 +1140,39 @@ body {
   line-height: 15px;
   text-transform: uppercase;
   color: #6E99AE;
+  text-decoration: none;
+}
+
+.article-secondary-post-category-name.opinions {
+  color: #3BBDC4;
+}
+
+.article-secondary-post-category-name.opinions:visited {
+  color: #3BBDC4;
+}
+
+.article-secondary-post-category-name.hot {
+  color: #FF4F52;
+}
+
+.article-secondary-post-category-name.hot:visited {
+  color: #FF4F52;
+}
+
+.article-secondary-post-category-name.match {
+  color: #AC8EE3;
+}
+
+.article-secondary-post-category-name.match:visited {
+  color: #AC8EE3;
+}
+
+.article-secondary-post-category-name.news {
+  color: #4592FF;
+}
+
+.article-secondary-post-category-name.news:visited {
+  color: #4592FF;
 }
 
 .article-secondary-post-title {

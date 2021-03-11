@@ -27,7 +27,16 @@
           </div>
         </a>
         <div class="post-text">
-          <?php the_category();?>
+          <?php 
+            foreach (get_the_category() as $category) {
+              printf(
+                '<a href="%s" class="category-link %s">%s</a>',
+                esc_url(get_category_link($category)),
+                esc_html($category -> slug),
+                esc_html($category -> name),
+              );
+            }
+          ?>
           <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...');?></h2>
           <a href="<?php echo get_the_permalink();?>" class="more">Читать далее</a>
         </div>
@@ -58,7 +67,16 @@
                 ?>
           <!-- Вывода постов, функции цикла: the_title() и т.д. -->
           <li class="post">
-            <?php the_category();?>
+            <?php 
+            foreach (get_the_category() as $category) {
+              printf(
+                '<a href="%s" class="category-link %s">%s</a>',
+                esc_url(get_category_link($category)),
+                esc_html($category -> slug),
+                esc_html($category -> name),
+              );
+            }
+            ?>
             <a class="post-permalink" href="<?php echo get_the_permalink();?>">
               <h4 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...');?></h4>
             </a>
@@ -226,8 +244,8 @@
       wp_reset_postdata(); // Сбрасываем $post
       ?>
     </ul>
-    <!-- Подключаем сайдбар -->
-    <?php get_sidebar();?>
+    <!-- Подключаем сайдбар на главной сверху -->
+    <?php get_sidebar('home-top');?>
   </div>
 </div>
 
@@ -263,13 +281,12 @@ wp_reset_postdata(); // Сбрасываем $post
 
 
 <!-- Секция с постами после расследования -->
-
 <section class="article-secondary">
   <div class="container">
-    <ul class="article-secondary-list">
-      <?php
+    <div class="article-secondary-boxwrap">
+      <ul class="article-secondary-list">
+        <?php
         global $post;
-
         $myposts = get_posts([ 
           'numberposts' => 6,
           'category_name' => 'news, opinions, hot, match',
@@ -280,40 +297,49 @@ wp_reset_postdata(); // Сбрасываем $post
           foreach( $myposts as $post ){
             setup_postdata( $post );
             ?>
-      <!-- Вывода постов, функции цикла: the_title() и т.д. -->
-      <li class="article-secondary-post">
-        <!-- <?php the_category();?> -->
-        <a class="article-secondary-post-permalink" href="<?php echo get_the_permalink();?>">
-          <div class="article-secondary-post-box">
-            <img src="<?php echo get_the_post_thumbnail_url()?>" alt="" class="article-secondary-post-img" width="336" height="195">
-            <div class="article-secondary-post-wrp">
-              <span class="article-secondary-post-category-name"><?php $category = get_the_category(); echo $category[0]->name; ?></span>
-              <h3 class="article-secondary-post-title"><?php echo mb_strimwidth(get_the_title(), 0, 68, '...');?></h3>
-              <p class="article-secondary-post-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...');?></p>
-              <div class="author-info">
-                <span class="date"><?php the_time( 'j F' )?></span>
-                <div class="comments">
-                  <img src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg' ?>" alt=""
-                    class="comments-icon">
-                  <span class="comments-counter"><?php comments_number('0', '1', '%');?></span>
+            <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+            <li class="article-secondary-post">
+              <a class="article-secondary-post-permalink" href="<?php echo get_the_permalink();?>">
+                <img src="<?php echo get_the_post_thumbnail_url()?>" alt="" class="article-secondary-post-img" width="336" height="195">
+                <div class="article-secondary-post-wrp">
+                  <?php 
+                  foreach (get_the_category() as $category) {
+                    printf(
+                      '<a href="%s" class="article-secondary-post-category-name %s">%s</a>',
+                      esc_url(get_category_link($category)),
+                      esc_html($category -> slug),
+                      esc_html($category -> name),
+                    );
+                  }
+                  ?>
+                  <h3 class="article-secondary-post-title"><?php echo mb_strimwidth(get_the_title(), 0, 68, '...');?></h3>
+                  <p class="article-secondary-post-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...');?></p>
+                  <div class="author-info">
+                    <span class="date"><?php the_time( 'j F' )?></span>
+                    <div class="comments">
+                      <img src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg' ?>" alt=""
+                        class="comments-icon">
+                      <span class="comments-counter"><?php comments_number('0', '1', '%');?></span>
+                    </div>
+                    <div class="likes">
+                      <img src="<?php echo get_template_directory_uri() . '/assets/images/heart-grey.svg'?>" alt=""
+                        class="likes-icon">
+                      <span class="likes-counter"><?php comments_number('0', '1', '%')?></span>
+                    </div>
+                  </div>
                 </div>
-                <div class="likes">
-                  <img src="<?php echo get_template_directory_uri() . '/assets/images/heart-grey.svg'?>" alt=""
-                    class="likes-icon">
-                  <span class="likes-counter"><?php comments_number('0', '1', '%')?></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </li>
-      <?php 
-          } 
-        } else {
-          ?> <p>Постов нет</p> <?php
-        }
-        wp_reset_postdata(); // Сбрасываем $post
-        ?>
-    </ul>
+              </a>
+            </li>
+        <?php 
+            } 
+          } else {
+            ?> <p>Постов нет</p> <?php
+          }
+          wp_reset_postdata(); // Сбрасываем $post
+          ?>
+      </ul>
+      <!-- Подключаем сайдбар на главной снизу -->
+      <?php get_sidebar('home-bottom');?>
+    </div>
   </div>
 </section>
