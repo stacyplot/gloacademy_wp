@@ -478,7 +478,7 @@ wp_reset_postdata(); // Сбрасываем $post
     </div>
   </div>
 </section>
-<?php wp_footer();?>
+<?php get_footer();?>
 
 
 

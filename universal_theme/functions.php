@@ -20,7 +20,8 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
     register_nav_menus( [
       'header_menu' => 'Меню в шапке',
       'footer_menu' => 'Меню в подвале'
-    ] );
+		] );
+		
 }
 endif;
 add_action( 'after_setup_theme', 'universal_theme_setup' );
@@ -52,6 +53,28 @@ function universal_theme_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Меню в подвале', 'universal_example' ),
+			'id'            => 'sidebar-footer',
+			'description'   => esc_html__( 'Добавьте меню сюда', 'universal_example' ),
+			'before_widget' => '<section id="%1$s" class="footer-menu %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="footer-menu-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Текст в подвале', 'universal_example' ),
+			'id'            => 'sidebar-footer-text',
+			'description'   => esc_html__( 'Добавьте текст сюда', 'universal_example' ),
+			'before_widget' => '<section id="%1$s" class="footer-text %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '',
+			'after_title'   => '',
 		)
 	);
 }
