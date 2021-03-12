@@ -1,0 +1,117 @@
+.special {
+  background-color: #262D33;
+  padding: 60px 0;
+}
+.special-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.photo-report {
+  min-height: 570px;
+  width: 49%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.photo-report .category-link {
+  font-size: 12px;
+  color: #fff;
+  text-transform: none;
+  border-radius: 3px;
+  background-color: #3DC47E;
+  align-self: start;
+  padding: 5px 12px;
+  position: absolute;
+  left: 18px;
+  top: 18px;
+}
+.photo-report .author {
+  text-align: center;
+  text-decoration: none;
+}
+.photo-report .author-name {
+  display: block;
+  color: #FFFFFF;
+  opacity: 0.85;
+  font-size: 14px;
+}
+.photo-report .author-rank {
+  color: #FFFFFF;
+  opacity: 0.4;
+  font-size: 12px;
+}
+.photo-report .author-avatar {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 8px;
+}
+.photo-report::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(64, 48, 61, 0.35), rgba(64, 48, 61, 0.35));
+  z-index: 1;
+}
+.photo-report-icon {
+  fill: #fff;
+  margin-right: 8px;
+}
+.photo-report-button {
+  color: #fff;
+  background: #4592FF;
+  border-radius: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.photo-report-button:hover {
+  color: #fff;
+}
+.photo-report-counter {
+  margin-left: 8px;
+}
+.photo-report-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px;
+  height: 100%;
+  text-align: center;
+}
+.photo-report-slider {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.photo-report-slider .swiper-slide {
+  height: 100%;
+}
+.photo-report-slider .swiper-slide img {
+  height: inherit;
+  width: 100%;
+  object-fit: cover;
+}
+.photo-report-title {
+  font-family: Roboto Slab;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.other {
+  width: 49%;
+}
