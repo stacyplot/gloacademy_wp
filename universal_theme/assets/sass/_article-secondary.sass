@@ -40,6 +40,7 @@
       &-permalink
         // display: block
         display: flex
+        // flex-wrap: wrap
         align-items: flex-start
         justify-content: space-between
         background-color: #fff
@@ -102,3 +103,27 @@
             margin-left: 5px
           &:hover
             color: #939699
+@media screen and ( max-width: 1200px )
+  .article-secondary-post-permalink
+    flex-wrap: wrap
+  .article
+    &-secondary
+      &-list
+        max-width: 70%
+    &-post
+      &-permalink
+        flex-wrap: wrap
+      &-title
+        width: 100%
+  .article-secondary-post
+    &-wrp
+      margin-left: 0px
+    &-img
+      width: 100%
+@media screen and ( max-width: 576px )
+  .article
+    &-secondary
+      &-boxwrap
+        flex-wrap: wrap
+      &-list
+        max-width: 100%

@@ -124,3 +124,34 @@
 .article-secondary-post .author-info .date:hover, .article-secondary-post .author-info .comments:hover, .article-secondary-post .author-info .likes:hover {
   color: #939699;
 }
+
+@media screen and (max-width: 1200px) {
+  .article-secondary-post-permalink {
+    flex-wrap: wrap;
+  }
+
+  .article-secondary-list {
+    max-width: 70%;
+  }
+  .article-post-permalink {
+    flex-wrap: wrap;
+  }
+  .article-post-title {
+    width: 100%;
+  }
+
+  .article-secondary-post-wrp {
+    margin-left: 0px;
+  }
+  .article-secondary-post-img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .article-secondary-boxwrap {
+    flex-wrap: wrap;
+  }
+  .article-secondary-list {
+    max-width: 100%;
+  }
+}

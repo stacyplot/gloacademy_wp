@@ -146,7 +146,7 @@
       $query = new WP_Query( [
         // получаем 7 постов
         'posts_per_page' => 7,
-        'category__not_in' => 29,
+        'category__not_in' => array(29,57),
         'post__not_in' => array(83,80,77,74,71,68),
       ] );
 
@@ -216,7 +216,7 @@
                       }?>
           </span>
           <span class="category-name"><?php $category = get_the_category(); echo $category[0]->name; ?></span>
-          <h4 class="article-grid-title"><?php echo the_title();?></h4>
+          <h4 class="article-grid-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...');?></h4>
           <div class="article-grid-info">
             <div class="author">
               <?php $author_id = get_the_author_meta('ID'); ?>
@@ -291,6 +291,9 @@
     <?php get_sidebar('home-top');?>
   </div>
 </div>
+
+
+
 
 <!-- Секция расследование -->
 <?php		
@@ -405,6 +408,10 @@ wp_reset_postdata(); // Сбрасываем $post
     </div>
   </div>
 </section>
+
+
+<!-- Секция с 3 постами, где пост-слайдер -->
+
 <section class="special">
   <div class="container">
     <div class="special-grid">
@@ -412,69 +419,113 @@ wp_reset_postdata(); // Сбрасываем $post
       global $post;
 
       $query = new WP_Query( [
-        'posts_per_page' => 1,
-        'category_name' => 'photo-report',
+        'posts_per_page' => 4,
+        'category_name' => 'photo-report, career',
+        'orderby' => 'date',
+        'order' => 'ASC'
       ] );
 
+
+
+      // проверяем, есть ли посты
       if ( $query->have_posts() ) {
+        // создаем переменную-счетчик постов
+        $count = 0;
+        // пока они есть, то выводим их
         while ( $query->have_posts() ) {
           $query->the_post();
-          ?>
-          <div class="photo-report">
-            <!-- Slider main container -->
-            <div class="swiper-container photo-report-slider">
-              <!-- Additional required wrapper -->
-              <div class="swiper-wrapper">
-                <!-- Slides -->
-                <?php $images = get_attached_media( 'image');
-                  foreach ($images as $image) {
-                    echo '<div class="swiper-slide"><img src="';
-                    print_r($image -> guid);
-                    echo '"></div>';
+          // увеличиваем счетчик постов
+          $count++;
+          switch ($count) {
+            // выводим первый пост
+            case '1':
+              ?>
+              <div class="left">
+                <div class="photo-report">
+                  <!-- Slider main container -->
+                  <div class="swiper-container photo-report-slider">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                      <!-- Slides -->
+                      <?php $images = get_attached_media( 'image');
+                        foreach ($images as $image) {
+                          echo '<div class="swiper-slide"><img src="';
+                          print_r($image -> guid);
+                          echo '"></div>';
+                        }
+                      ?>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                  </div>
+                  <div class="photo-report-content">
+                    <?php 
+                    foreach (get_the_category() as $category) {
+                      printf(
+                        '<a href="%s" class="category-link ">%s</a>',
+                        esc_url(get_category_link($category)),
+                        esc_html($category -> name),
+                      );
+                    }
+                    ?>
+                    <?php $author_id = get_the_author_meta('ID'); ?>
+                    <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
+                      <img src="<?php echo get_avatar_url($author_id); ?>" alt="<?php echo get_author_posts_url($author_id); ?>"
+                        class="author-avatar">
+                      <div class="author-bio">
+                        <span class="author-name"><?php the_author(); ?></span>
+                        <span class="author-rank">Роль автора</span>
+                      </div>
+                    </a>
+                    <h3 class="photo-report-title"><?php the_title();?></h3>
+                    <a href="<?php echo get_the_permalink();?>" class="button photo-report-button">
+                      <svg width="19" height="15" class="icon photo-report-icon">
+                        <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/sprite.svg#images'?>"></use>
+                      </svg>
+                      Смотреть фото
+                      <span class="photo-report-counter"><?php echo count($images)?></span>
+                    </a>
+                  </div>
+                
+                </div>
+              </div>
+              <div class="right">
+                <?php
+                  break;
+
+                  // выводим второй пост
+                  case '2': ?>
+                    <li class="special-article-post">
+                      <span class="special-article-category"><?php $category = get_the_category(); echo $category[0]->name; ?></span>
+                      <h4 class="special-article-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, '...');?></h4>
+                      <p class="special-article-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 85, '...');?></p>
+                      <a href="<?php echo get_the_permalink();?>" class="more">Читать далее</a>
+                    </li>
+
+                <?php break;
+
+                  // выводим остальные посты
+                  default: ?>
+                    <li class="special-article-default">
+                      <a href="<?php the_permalink();?>" class="article-grid-permalink">
+                        <h4 class="special-article-default-title"><?php echo mb_strimwidth(get_the_title(), 0, 40, '...');?></h4>
+                        <p class="special-article-default-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 70, '...');?></p>
+                        <span class="special-article-default-date"><?php the_time( 'j F Y' )?></span>
+                      </a>
+                    </li>
+                <?php break;
                   }
                 ?>
-              </div>
-              <!-- If we need pagination -->
-              <div class="swiper-pagination"></div>
-            </div>
-            <div class="photo-report-content">
-              <?php 
-              foreach (get_the_category() as $category) {
-                printf(
-                  '<a href="%s" class="category-link ">%s</a>',
-                  esc_url(get_category_link($category)),
-                  esc_html($category -> name),
-                );
-              }
-              ?>
-              <?php $author_id = get_the_author_meta('ID'); ?>
-              <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
-                <img src="<?php echo get_avatar_url($author_id); ?>" alt="<?php echo get_author_posts_url($author_id); ?>"
-                  class="author-avatar">
-                <div class="author-bio">
-                  <span class="author-name"><?php the_author(); ?></span>
-                  <span class="author-rank">Роль автора</span>
-                </div>
-              </a>
-              <h3 class="photo-report-title"><?php the_title();?></h3>
-              <a href="<?php echo get_the_permalink();?>" class="button photo-report-button">
-                <svg width="19" height="15" class="icon photo-report-icon">
-                  <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/sprite.svg#images'?>"></use>
-                </svg>
-                Смотреть фото
-                <span class="photo-report-counter"><?php echo count($images)?></span>
-              </a>
-            </div>
-          
-          </div>
-          <?php 
-        }
-      } else {
-        // Постов не найдено
-      }
+                <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+                <?php 
+                  }
+                  } else {
+                    // Постов не найдено
+                  }
 
-      wp_reset_postdata(); // Сбрасываем $post
-      ?>
+                  wp_reset_postdata(); // Сбрасываем $post
+                  ?>
+              </div>
     </div>
   </div>
 </section>

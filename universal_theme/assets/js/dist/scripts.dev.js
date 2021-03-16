@@ -11,3 +11,8 @@ var swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination'
   }
 });
+var menuToggle = $('.header-menu-toggle');
+menuToggle.on('click', function (event) {
+  event.preventDefault();
+  $('.header-nav').slideToggle();
+});
