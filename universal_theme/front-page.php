@@ -509,7 +509,7 @@ wp_reset_postdata(); // Сбрасываем $post
                     <li class="special-article-default">
                       <a href="<?php the_permalink();?>" class="article-grid-permalink">
                         <h4 class="special-article-default-title"><?php echo mb_strimwidth(get_the_title(), 0, 40, '...');?></h4>
-                        <p class="special-article-default-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 70, '...');?></p>
+                        <p class="special-article-default-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 0, '...');?></p>
                         <span class="special-article-default-date"><?php the_time( 'j F Y' )?></span>
                       </a>
                     </li>

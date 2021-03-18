@@ -79,6 +79,9 @@
   align-items: center;
   font-family: "Lato Black", sans serif;
 }
+.footer-nav-wrapper {
+  margin-right: auto;
+}
 .footer-text {
   max-width: 750px;
 }

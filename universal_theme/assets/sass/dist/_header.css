@@ -17,6 +17,33 @@
 .header-menu-toggle {
   display: none;
 }
+.header-light {
+  background-color: #fff;
+}
+.header-light .logo-name {
+  color: #4592FF;
+}
+.header-light .menu-item a {
+  color: #939699;
+}
+.header-light .search-form input {
+  background-color: #F5F5F5;
+}
+
+.custom-logo {
+  width: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo-name {
+  color: #fff;
+  font-family: Roboto Slab, serif;
+  font-size: 24px;
+  margin-left: 10px;
+}
 
 .menu-item a {
   text-decoration: none;
