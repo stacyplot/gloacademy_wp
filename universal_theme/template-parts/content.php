@@ -128,6 +128,8 @@
           /* translators: 1: list of tags. */
           printf( '<span class="tags-links">' . esc_html__( '%1$s', 'universal_example' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
+        //  Ссылки на соц сети
+        meks_ess_share();
       ?>
     </div>
 	</footer><!-- .entry-footer -->
