@@ -120,6 +120,7 @@
       ?>
     </div><!-- содержимое поста -->
   </div>
+
   <footer class="entry-footer">
     <div class="container">
       <?php 
@@ -131,6 +132,62 @@
         //  Ссылки на соц сети
         meks_ess_share();
       ?>
+    </div>
+    <!-- Секция с остальными постами из этой же рубрики -->
+    <div class="other-posts">
+      <div class="container">
+        <ul class="other-posts-list">
+          <?php
+          global $post;
+          $myposts = get_posts([ 
+            'numberposts' => 4,
+            'category_name' => 'java-script',
+            'exclude' => '28',
+          ]);
+
+          if( $myposts ){
+            foreach( $myposts as $post ){
+              setup_postdata( $post );
+              ?>
+              <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+              <li class="other-posts-item">
+                <a class="other-posts-permalink" href="<?php echo get_the_permalink();?>">
+                  <div class="other-posts-img">
+                    <img src="<?php 
+                      if( has_post_thumbnail() ) {
+                        echo get_the_post_thumbnail_url();
+                      }
+                      else {
+                        echo get_template_directory_uri().'/assets/images/img-default.png" />';
+                      }
+                      ?>" alt="">
+                  </div>
+                  <h4 class="other-posts-title"><?php echo mb_strimwidth(get_the_title(), 0, 68, '...');?></h4>
+                  <div class="author-info">
+                    <div class="comments">
+                      <svg width="13.5" height="13.5" class="icon comments-icon" fill="#BCBFC2">
+                        <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/sprite.svg#comment'?>"></use>
+                      </svg>
+                      <span class="comments-counter"><?php comments_number('0', '1', '%');?></span>
+                    </div>
+                    <div class="likes">
+                      <svg width="13" height="12" class="icon likes-icon" fill="#BCBFC2">
+                        <use xlink:href="<?php echo get_template_directory_uri() . '/assets/images/sprite.svg#heart'?>"></use>
+                      </svg>
+                      <span class="likes-counter"><?php comments_number('0', '1', '%')?></span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+          <?php 
+              } 
+            } else {
+              ?> <p>Постов нет</p> <?php
+            }
+            wp_reset_postdata(); // Сбрасываем $post
+            ?>
+        </ul>
+      </div>
     </div>
 	</footer><!-- .entry-footer -->
 </article>
