@@ -9,6 +9,7 @@
           $myposts = get_posts([ 
             'numberposts' => 1,
             'category_name' => 'java-script, css, web-design, html',
+            'exclude' => '187,184,180',
           ]);
 
           if( $myposts ){
