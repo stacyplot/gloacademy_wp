@@ -1,0 +1,32 @@
+.pagination
+  .nav-links
+    background-color: #fff
+    border-radius: 10px
+    margin-top: 40px
+    display: flex
+    justify-content: center
+    align-items: center
+    *
+      padding: 17px
+      text-decoration: none
+      font-size: 14px
+      // font-family: "Lato Black", sans-serif
+      color: #262D33
+      text-align: center
+      &:not(:last-child)
+        border-right: 1px solid #D9DADB
+    .prev
+      padding: 17px 70px
+      margin-right: auto
+      flex-grow: 1
+      display: flex
+      align-items: center
+    .next
+      padding: 17px 70px
+      margin-left: auto
+      flex-grow: 1
+      display: flex
+      align-items: center
+  &-prev
+    &-icon
+      fill: #BCBFC2
