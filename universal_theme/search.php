@@ -8,9 +8,6 @@
             <?php while ( have_posts() ){ the_post(); ?>
               <li class="article-secondary-post">
                 <a class="article-secondary-post-permalink" href="<?php echo get_the_permalink();?>">
-                  <?php
-                  
-                  ?>
                   <img src="<?php 
                     if( has_post_thumbnail() ) {
                       echo get_the_post_thumbnail_url();
@@ -20,16 +17,7 @@
                     }
                     ?>" alt="" class="article-secondary-post-img" width="336" height="195">
                   <div class="article-secondary-post-wrp">
-                    <?php 
-                    foreach (get_the_category() as $category) {
-                      sprintf(
-                        '<a href="%s" class="article-secondary-post-category-name article-secondary-post-category-%s">%s</a>',
-                        esc_url(get_category_link($category)),
-                        esc_html($category -> slug),
-                        esc_html($category -> name),
-                      );
-                    }
-                    ?>
+                    
                     <h3 class="article-secondary-post-title"><?php echo mb_strimwidth(get_the_title(), 0, 68, '...');?></h3>
                     <p class="article-secondary-post-excerpt"><?php echo mb_strimwidth(get_the_excerpt(), 0, 150, '...');?></p>
                     <div class="author-info">
@@ -67,22 +55,3 @@
       
     </div>
   </div>
-
-
-
-  <!-- <div class="container">
-    <h1 class="search-title">Результаты поиска по запросу</h1>
-    <ul>
-      <?php while ( have_posts() ){ the_post(); ?>
-        <li>
-          <a href="<?php echo get_the_permalink();?>">
-            <h2><?php the_title();?></h2>
-          </a>
-        </li>
-      <?php } ?>
-      <?php if ( ! have_posts() ){ ?>
-        Записей нет.
-      <?php } ?>
-    </ul>
-  </div> -->
-<?php get_footer(); ?>

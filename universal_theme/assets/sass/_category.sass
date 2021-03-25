@@ -1,0 +1,56 @@
+.category
+  &-title
+    font-family: Roboto Slab
+    font-size: 40px
+    color: #262D33
+  .post
+    &-list
+      display: flex
+      flex-wrap: wrap
+    &-card
+      width: 23%
+      margin-bottom: 30px
+      background-color: #fff
+      border-radius: 10px
+      overflow: hidden
+      &:not(:last-child)
+        margin-right: 2%
+      &-text
+        padding: 15px 25px 25px 25px
+      &-thumb
+        height: 180px
+        width: 100%
+        object-fit: cover
+      &-title
+        font-family: Roboto Slab
+        font-size: 16px
+        margin-bottom: 5px
+        margin-top: 0
+      &-excerpt
+        color: #4B5157
+        font-size: 14px
+        margin-bottom: 14px
+        margin-top: 0
+      .author
+        display: flex
+        align-items: center
+        &-avatar
+          border-radius: 50%
+          width: 45px
+          height: 45px
+        &-info
+          display: flex
+          align-items: center
+          flex-wrap: wrap
+          margin-left: 10px
+          color: #BCBFC2
+        &-name
+          width: 100%
+          color: #4B5157
+      .comments, .likes
+        margin-left: 10px
+        font-size: 12px
+        display: flex
+        align-items: center
+        svg
+          margin-right: 5px
