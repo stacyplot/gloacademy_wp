@@ -142,6 +142,10 @@ body {
   padding: 10px 25px;
 }
 
+.search-form input:focus {
+  color: #fff;
+}
+
 .search-form input::-webkit-input-placeholder {
   color: #939699;
 }
@@ -2530,6 +2534,7 @@ body {
 
 .comments-area {
   max-width: 750px;
+  border-radius: 10px;
 }
 
 .comments-title {
@@ -2664,6 +2669,7 @@ body {
   background: #F5F5F5;
   border-radius: 10px;
   padding: 30px 40px 35px 30px;
+  margin-bottom: 30px;
 }
 
 .comment-form .avatar {
@@ -2897,4 +2903,148 @@ body {
 
 .category .post-card .comments svg, .category .post-card .likes svg {
   margin-right: 5px;
+}
+
+.section-dark {
+  background-color: #262D33;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 122px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 40px;
+  font-family: Roboto Slab;
+  margin-bottom: 27px;
+}
+
+.page-text {
+  font-size: 18px;
+  line-height: 30px;
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 28px;
+}
+
+.contacts-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.contacts-wrapper .right {
+  margin-left: 80px;
+}
+
+.contacts-info {
+  display: block;
+  max-width: 263px;
+  opacity: 0.85;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.contacts-info:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.wpcf7-form {
+  max-width: 460px;
+}
+
+.wpcf7-form input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.wpcf7-form input::-webkit-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form input:-ms-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form input::-ms-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form input::placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  height: 120px;
+  resize: none;
+}
+
+.wpcf7-form textarea::-webkit-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form textarea:-ms-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form textarea::-ms-input-placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form textarea::placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+
+.wpcf7-form .more {
+  display: inline-block;
+  max-width: 150px;
+  color: #ffffff;
+  padding: 10px 50px 10px 20px;
+  background-color: #4592FF;
+  border-radius: 20px;
+  text-decoration: none;
+  background-image: url("../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center right 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.wpcf7-form .more:visited, .wpcf7-form .more:focus, .wpcf7-form .more:hover {
+  color: #fff;
+}
+
+.common-title {
+  margin: 0;
+  font-size: 40px;
+  font-family: Roboto Slab;
+  margin-bottom: 27px;
+  margin-top: 30px;
+}
+
+.common-content {
+  color: #4B5157;
+  max-width: 70%;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.common-content:not(:last-child) {
+  margin-bottom: 20px;
 }

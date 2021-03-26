@@ -55,3 +55,6 @@
       
     </div>
   </div>
+  <div class="container">
+    <?php get_footer();?>
+  </div>

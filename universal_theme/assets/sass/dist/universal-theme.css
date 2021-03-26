@@ -2093,3 +2093,153 @@ body {
 .pagination-prev-icon {
   fill: #BCBFC2;
 }
+
+.category-title {
+  font-family: Roboto Slab;
+  font-size: 40px;
+  color: #262D33;
+}
+.category .post-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category .post-card {
+  width: 23%;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.category .post-card:not(:last-child) {
+  margin-right: 2%;
+}
+.category .post-card-text {
+  padding: 15px 25px 25px 25px;
+}
+.category .post-card-thumb {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+.category .post-card-title {
+  font-family: Roboto Slab;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.category .post-card-excerpt {
+  color: #4B5157;
+  font-size: 14px;
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+.category .post-card .author {
+  display: flex;
+  align-items: center;
+}
+.category .post-card .author-avatar {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+.category .post-card .author-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  color: #BCBFC2;
+}
+.category .post-card .author-name {
+  width: 100%;
+  color: #4B5157;
+}
+.category .post-card .comments, .category .post-card .likes {
+  margin-left: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.category .post-card .comments svg, .category .post-card .likes svg {
+  margin-right: 5px;
+}
+
+.section-dark {
+  background-color: #262D33;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 122px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 40px;
+  font-family: Roboto Slab;
+  margin-bottom: 27px;
+}
+.page-text {
+  font-size: 18px;
+  line-height: 30px;
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 28px;
+}
+
+.contacts-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+.contacts-wrapper .right {
+  margin-left: 80px;
+}
+.contacts-info {
+  display: block;
+  max-width: 263px;
+  opacity: 0.85;
+  font-size: 14px;
+  line-height: 20px;
+}
+.contacts-info:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.wpcf7-form {
+  max-width: 460px;
+}
+.wpcf7-form input {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+.wpcf7-form input::placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  height: 120px;
+  resize: none;
+}
+.wpcf7-form textarea::placeholder {
+  color: #939699;
+  font-size: 14px;
+}
+.wpcf7-form .more {
+  display: inline-block;
+  max-width: 150px;
+  color: #ffffff;
+  padding: 10px 50px 10px 20px;
+  background-color: #4592FF;
+  border-radius: 20px;
+  text-decoration: none;
+  background-image: url("../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center right 20px;
+  border: none;
+  cursor: pointer;
+}
+.wpcf7-form .more:visited, .wpcf7-form .more:focus, .wpcf7-form .more:hover {
+  color: #fff;
+}
