@@ -10,28 +10,36 @@
     font-size: 40px
     font-family: Roboto Slab
     margin-bottom: 27px
-  &-text
+.contacts
+  &-wrapper
+    display: flex
+    align-items: flex-start
+    .right
+      margin-left: 80px
+      a
+        text-decoration: none
+        color: #ffffff
+        opacity: 0.85
+        display: block
+        max-width: 263px
+        opacity: 0.85
+        font-size: 14px
+        line-height: 20px
+        &:not(:last-child)
+          margin-bottom: 15px
+      address
+        max-width: 263px
+        font-style: normal
+        opacity: 0.85
+
+  &-title
     font-size: 18px
     line-height: 30px
     font-family: "Lato", sans-serif
     padding: 0
     margin: 0
     margin-bottom: 28px
-.contacts
-  &-wrapper
-    display: flex
-    align-items: flex-start
 
-    .right
-      margin-left: 80px
-  &-info
-    display: block
-    max-width: 263px
-    opacity: 0.85
-    font-size: 14px
-    line-height: 20px
-    &:not(:last-child)
-      margin-bottom: 15px
 .wpcf7-form
   max-width: 460px
   input

@@ -10,7 +10,7 @@ get_header(); ?>
     <?php the_title('<h1 class="page-title">', '</h1>', true);?>
     <div class="contacts-wrapper">
       <div class="left">
-        <p class="page-text">Через форму обратной связи</p>
+        <h2 class="contacts-title">Через форму обратной связи</h2>
         <!-- <form action="#" class="contacts-form" method="POST">
           <input name="contact_name" type="text" class="input contacts-input" placeholder="Ваше имя">
           <input name="contact_email" type="email" class="input contacts-input" placeholder="Ваш email">
@@ -20,10 +20,19 @@ get_header(); ?>
         <?php echo do_shortcode('[contact-form-7 id="194" title="Контактная форма"]');?>
       </div>
       <div class="right">
-        <p class="page-text">Или по этим контактам</p>
-        <span class="contacts-info">hello@forpeople.studio</span>
-        <span class="contacts-info">3522 I-75, Business Spur Sault Sainte Marie, MI, 49783</span>
-        <span class="contacts-info">+2 800 089 45-34</span>
+        <h2 class="contacts-title">Или по этим контактам</h2>
+        <?php
+        $email = get_post_meta( get_the_ID( ), 'email', true );
+        if ($email) {echo '<a href="mailto:' . $email . '" class="contacts-info">' . $email . '</a>'; }
+         
+        $address = get_post_meta( get_the_ID( ), 'address', true );
+        if ($address){ echo '<address class="contacts-info">' . $address . '</address>'; }
+        
+        $phone = get_post_meta( get_the_ID( ), 'phone', true );
+        if ($phone){ echo '<a href="tel:' . $phone . '" class="contacts-info">' . $phone . '</a>' ; }
+
+        the_field('date');
+        ?>
       </div>
     </div>
   </div>

@@ -2919,15 +2919,6 @@ body {
   margin-bottom: 27px;
 }
 
-.page-text {
-  font-size: 18px;
-  line-height: 30px;
-  font-family: "Lato", sans-serif;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 28px;
-}
-
 .contacts-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2941,7 +2932,10 @@ body {
   margin-left: 80px;
 }
 
-.contacts-info {
+.contacts-wrapper .right a {
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.85;
   display: block;
   max-width: 263px;
   opacity: 0.85;
@@ -2949,8 +2943,23 @@ body {
   line-height: 20px;
 }
 
-.contacts-info:not(:last-child) {
+.contacts-wrapper .right a:not(:last-child) {
   margin-bottom: 15px;
+}
+
+.contacts-wrapper .right address {
+  max-width: 263px;
+  font-style: normal;
+  opacity: 0.85;
+}
+
+.contacts-title {
+  font-size: 18px;
+  line-height: 30px;
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 28px;
 }
 
 .wpcf7-form {
