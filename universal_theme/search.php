@@ -13,7 +13,7 @@
                       echo get_the_post_thumbnail_url();
                     }
                     else {
-                      echo get_template_directory_uri().'/assets/images/img-default.png" />';
+                      echo get_template_directory_uri().'/assets/images/img-default.png"';
                     }
                     ?>" alt="" class="article-secondary-post-img" width="336" height="195">
                   <div class="article-secondary-post-wrp">

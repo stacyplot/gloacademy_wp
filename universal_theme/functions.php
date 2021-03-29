@@ -609,3 +609,19 @@ function plural_form($number, $after) {
 	$cases = array (2, 0, 1, 1, 1, 2);
 	echo $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
 }
+
+// удалить тэг p, br и span из contact form 7
+add_filter('wpcf7_autop_or_not', '__return_false');
+add_filter('wpcf7_form_elements', function($content) {
+    $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+    return $content;
+});
+
+// Удаляет все type js and css
+add_action( 'template_redirect', function(){
+    ob_start( function( $buffer ){
+        $buffer = str_replace( array( 'type="text/javascript"', "type='text/javascript'" ), '', $buffer );
+        $buffer = str_replace( array( 'type="text/css"', "type='text/css'" ), '', $buffer );
+        return $buffer;
+    });
+});
