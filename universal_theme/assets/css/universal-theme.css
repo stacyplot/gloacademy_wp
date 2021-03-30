@@ -3057,3 +3057,8 @@ body {
 .common-content:not(:last-child) {
   margin-bottom: 20px;
 }
+
+.lesson-header {
+  padding: 80px 0;
+  color: #fff;
+}

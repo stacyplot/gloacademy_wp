@@ -112,6 +112,9 @@ body {
   border: none;
   padding: 10px 25px;
 }
+.search-form input:focus {
+  color: #fff;
+}
 .search-form input::placeholder {
   color: #939699;
 }
@@ -1900,6 +1903,7 @@ body {
 
 .comments-area {
   max-width: 750px;
+  border-radius: 10px;
 }
 .comments-title {
   font-family: Roboto Slab;
@@ -1995,6 +1999,7 @@ body {
   background: #F5F5F5;
   border-radius: 10px;
   padding: 30px 40px 35px 30px;
+  margin-bottom: 30px;
 }
 .comment-form .avatar {
   border-radius: 50%;
@@ -2176,14 +2181,6 @@ body {
   font-family: Roboto Slab;
   margin-bottom: 27px;
 }
-.page-text {
-  font-size: 18px;
-  line-height: 30px;
-  font-family: "Lato", sans-serif;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 28px;
-}
 
 .contacts-wrapper {
   display: flex;
@@ -2192,15 +2189,31 @@ body {
 .contacts-wrapper .right {
   margin-left: 80px;
 }
-.contacts-info {
+.contacts-wrapper .right a {
+  text-decoration: none;
+  color: #ffffff;
+  opacity: 0.85;
   display: block;
   max-width: 263px;
   opacity: 0.85;
   font-size: 14px;
   line-height: 20px;
 }
-.contacts-info:not(:last-child) {
+.contacts-wrapper .right a:not(:last-child) {
   margin-bottom: 15px;
+}
+.contacts-wrapper .right address {
+  max-width: 263px;
+  font-style: normal;
+  opacity: 0.85;
+}
+.contacts-title {
+  font-size: 18px;
+  line-height: 30px;
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 28px;
 }
 
 .wpcf7-form {
@@ -2242,4 +2255,21 @@ body {
 }
 .wpcf7-form .more:visited, .wpcf7-form .more:focus, .wpcf7-form .more:hover {
   color: #fff;
+}
+
+.common-title {
+  margin: 0;
+  font-size: 40px;
+  font-family: Roboto Slab;
+  margin-bottom: 27px;
+  margin-top: 30px;
+}
+.common-content {
+  color: #4B5157;
+  max-width: 70%;
+  font-size: 18px;
+  line-height: 30px;
+}
+.common-content:not(:last-child) {
+  margin-bottom: 20px;
 }
