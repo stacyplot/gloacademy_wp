@@ -1,6 +1,5 @@
-<?php get_header();?>
+<?php get_header(); ?>
   <div class="container">
-    <?php if ( function_exists( 'the_breadcrumbs' ) ) the_breadcrumbs(); ?>
     <h1 class="category-title"><?php single_cat_title();?></h1>
     <div class="post-list">
       <?php while ( have_posts() ){ the_post(); ?>
@@ -44,4 +43,4 @@
       <?php } ?>
     </div>
   </div>
-<?php get_footer();?>
+<?php get_footer();

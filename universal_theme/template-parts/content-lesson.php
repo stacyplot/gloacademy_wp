@@ -64,7 +64,7 @@
 
       wp_link_pages(
         array(
-          'before' => '<div class="page-links">' . esc_html__( 'Страницы:', 'universal_example' ),
+          'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'universal_example' ),
           'after'  => '</div>',
         )
       );

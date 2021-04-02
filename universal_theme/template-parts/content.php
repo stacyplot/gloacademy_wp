@@ -36,8 +36,8 @@
                 <svg width="15" height="7" class="icon prev-icon" fill="#ffffff">
                   <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#left-arrow"></use>
                 </svg>
-              ' . esc_html__( 'Назад', 'universal_example' ) . '</span>',
-              'next_text' => '<span class="post-nav-next">' . esc_html__( 'Вперед', 'universal_example' ) . '
+              ' . esc_html__( 'Back', 'universal' ) . '</span>',
+              'next_text' => '<span class="post-nav-next">' . esc_html__( 'Forward', 'universal' ) . '
               <svg width="15" height="7" class="icon next-icon" fill="#ffffff">
                 <use xlink:href="' . get_template_directory_uri() . '/assets/images/sprite.svg#arrow"></use>
               </svg>
@@ -113,7 +113,7 @@
 
       wp_link_pages(
         array(
-          'before' => '<div class="page-links">' . esc_html__( 'Страницы:', 'universal_example' ),
+          'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'universal_example' ),
           'after'  => '</div>',
         )
       );

@@ -2,6 +2,12 @@
 // Добавление расширенных возможностей
 if ( ! function_exists( 'universal_theme_setup' ) ) :
   function universal_theme_setup() {
+
+		// Подключение файлов перевода
+		load_theme_textdomain( 'universal', get_template_directory() . '/languages' );
+
+
+
     // Добавление тега title 
     add_theme_support( 'title-tag' );
 
@@ -14,7 +20,7 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
     'flex-height' => true,
     'header-text' => 'Universal',
     'unlink-homepage-logo' => false, // WP 5.5
-  ] );
+  	] );
 
     // Регистрация меню
     register_nav_menus( [
@@ -62,7 +68,60 @@ if ( ! function_exists( 'universal_theme_setup' ) ) :
 				'rewrite'             => true,
 				'query_var'           => true,
 			] );
-}
+		}
+
+		// регистрирующая новые таксономии (create_lesson_taxonomies)
+		add_action( 'init', 'create_lesson_taxonomies' );
+
+		// функция, создающая 2 новые таксономии "genres" и "authors" для постов типа "lesson"
+		function create_lesson_taxonomies(){
+
+			// Добавляем древовидную таксономию 'genre' (как категории)
+			register_taxonomy('genre', array('lesson'), array(
+				'hierarchical'  => true,
+				'labels'        => array(
+					'name'              => _x( 'Genres', 'taxonomy general name', 'universal' ),
+					'singular_name'     => _x( 'Genre', 'taxonomy singular name', 'universal' ),
+					'search_items'      =>  __( 'Search Genres', 'universal' ),
+					'all_items'         => __( 'All Genres', 'universal' ),
+					'parent_item'       => __( 'Parent Genre', 'universal' ),
+					'parent_item_colon' => __( 'Parent Genre:', 'universal' ),
+					'edit_item'         => __( 'Edit Genre', 'universal' ),
+					'update_item'       => __( 'Update Genre', 'universal' ),
+					'add_new_item'      => __( 'Add New Genre', 'universal' ),
+					'new_item_name'     => __( 'New Genre Name', 'universal' ),
+					'menu_name'         => __( 'Genre', 'universal' ),
+				),
+				'show_ui'       => true,
+				'query_var'     => true,
+				'rewrite'       => array( 'slug' => 'the_genre' ), // свой слаг в URL
+			));
+
+			// Добавляем НЕ древовидную таксономию 'teacher' (как метки)
+			register_taxonomy('teacher', 'lesson',array(
+				'hierarchical'  => false,
+				'labels'        => array(
+					'name'                        => _x( 'Teachers', 'taxonomy general name', 'universal' ),
+					'singular_name'               => _x( 'Teacher', 'taxonomy singular name', 'universal' ),
+					'search_items'                =>  __( 'Search Teachers', 'universal' ),
+					'popular_items'               => __( 'Popular Teachers', 'universal' ),
+					'all_items'                   => __( 'All Teachers', 'universal' ),
+					'parent_item'                 => null,
+					'parent_item_colon'           => null,
+					'edit_item'                   => __( 'Edit Teacher', 'universal' ),
+					'update_item'                 => __( 'Update Teacher', 'universal' ),
+					'add_new_item'                => __( 'Add New Teacher', 'universal' ),
+					'new_item_name'               => __( 'New Teacher Name', 'universal' ),
+					'separate_items_with_commas'  => __( 'Separate teachers with commas', 'universal' ),
+					'add_or_remove_items'         => __( 'Add or remove teachers', 'universal' ),
+					'choose_from_most_used'       => __( 'Choose from the most used teachers', 'universal' ),
+					'menu_name'                   => __( 'Teachers', 'universal' ),
+				),
+				'show_ui'       => true,
+				'query_var'     => true,
+				'rewrite'       => array( 'slug' => 'the_teacher' ), // свой слаг в URL
+			));
+		}
 		
 }
 endif;
@@ -77,9 +136,9 @@ add_action( 'after_setup_theme', 'universal_theme_setup' );
 function universal_theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Сайдбар на главной сверху', 'universal_example' ),
+			'name'          => esc_html__( 'Top widget on the main page', 'universal_example' ),
 			'id'            => 'main-sidebar-top',
-			'description'   => esc_html__( 'Добавьте виджеты сюда', 'universal_example' ),
+			'description'   => esc_html__( 'Please add widgets here', 'universal_example' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -88,9 +147,9 @@ function universal_theme_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Сайдбар на главной снизу', 'universal_example' ),
+			'name'          => esc_html__( 'Bottom widget on the main page', 'universal_example' ),
 			'id'            => 'main-sidebar-bottom',
-			'description'   => esc_html__( 'Добавьте виджеты сюда', 'universal_example' ),
+			'description'   => esc_html__( 'Please add widgets here', 'universal_example' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -99,9 +158,9 @@ function universal_theme_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Меню в подвале', 'universal_example' ),
+			'name'          => esc_html__( 'Footer menu', 'universal_example' ),
 			'id'            => 'sidebar-footer',
-			'description'   => esc_html__( 'Добавьте меню сюда', 'universal_example' ),
+			'description'   => esc_html__( 'Add menu here', 'universal_example' ),
 			'before_widget' => '<section id="%1$s" class="footer-menu %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="footer-menu-title">',
@@ -110,9 +169,9 @@ function universal_theme_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Текст в подвале', 'universal_example' ),
+			'name'          => esc_html__( 'Footer text', 'universal_example' ),
 			'id'            => 'sidebar-footer-text',
-			'description'   => esc_html__( 'Добавьте текст сюда', 'universal_example' ),
+			'description'   => esc_html__( 'Add text here', 'universal_example' ),
 			'before_widget' => '<section id="%1$s" class="footer-text %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '',
@@ -182,15 +241,15 @@ class Downloader_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Заголовок:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
     </p>
     <p>
-			<label for="<?php echo $this->get_field_id( 'description' ); ?>"><?php _e( 'Описание:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'description' ); ?>"><?php _e( 'Description:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>" type="text" value="<?php echo esc_attr( $description ); ?>">
     </p>
     <p>
-			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Ссылка на файл:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'File link:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_attr( $link ); ?>">
 		</p>
 		<?php 
@@ -329,23 +388,23 @@ class Socials_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Заголовок:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e( 'Ссылка на страницу в Facebook:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e( 'Link to Facebook page:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" type="text" value="<?php echo esc_attr( $facebook ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'twitter' ); ?>"><?php _e( 'Ссылка на страницу в Twitter:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'twitter' ); ?>"><?php _e( 'Link to Twitter page:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'twitter' ); ?>" name="<?php echo $this->get_field_name( 'twitter' ); ?>" type="text" value="<?php echo esc_attr( $twitter ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'instagram' ); ?>"><?php _e( 'Ссылка на страницу в Instagram:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'instagram' ); ?>"><?php _e( 'Link to Instagram page:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'instagram' ); ?>" name="<?php echo $this->get_field_name( 'instagram' ); ?>" type="text" value="<?php echo esc_attr( $instagram ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'youtube' ); ?>"><?php _e( 'Ссылка на страницу в Youtube:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'youtube' ); ?>"><?php _e( 'Link to Youtube page:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'youtube' ); ?>" name="<?php echo $this->get_field_name( 'youtube' ); ?>" type="text" value="<?php echo esc_attr( $youtube ); ?>">
 		</p>
 		<?php 
@@ -494,11 +553,11 @@ class Recent_Posts_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Заголовок:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
     </p>
     <p>
-			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Количество постов:' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Amount of posts' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="text" value="<?php echo esc_attr( $count ); ?>">
     </p>
 		<?php 
@@ -667,3 +726,222 @@ add_action( 'template_redirect', function(){
         return $buffer;
     });
 });
+
+
+/*
+ * "Хлебные крошки" для WordPress
+ * автор: Dimox
+ * версия: 2019.03.03
+ * лицензия: MIT
+*/
+function the_breadcrumbs() {
+
+	/* === ОПЦИИ === */
+	$text['home']     = 'Главная'; // текст ссылки "Главная"
+	$text['category'] = '%s'; // текст для страницы рубрики
+	$text['search']   = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
+	$text['tag']      = 'Записи с тегом "%s"'; // текст для страницы тега
+	$text['author']   = 'Статьи автора %s'; // текст для страницы автора
+	$text['404']      = 'Ошибка 404'; // текст для страницы 404
+	$text['page']     = 'Страница %s'; // текст 'Страница N'
+	$text['cpage']    = 'Страница комментариев %s'; // текст 'Страница комментариев N'
+
+	$wrap_before    = '<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
+	$wrap_after     = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
+	$sep            = '<span class="breadcrumbs__separator"> › </span>'; // разделитель между "крошками"
+	$before         = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
+	$after          = '</span>'; // тег после текущей "крошки"
+
+	$show_on_home   = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
+	$show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
+	$show_current   = 1; // 1 - показывать название текущей страницы, 0 - не показывать
+	$show_last_sep  = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
+	/* === КОНЕЦ ОПЦИЙ === */
+
+	global $post;
+	$home_url       = home_url('/');
+	$link           = '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+	$link          .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
+	$link          .= '<meta itemprop="position" content="%3$s" />';
+	$link          .= '</span>';
+	$parent_id      = ( $post ) ? $post->post_parent : '';
+	$home_link      = sprintf( $link, $home_url, $text['home'], 1 );
+
+	if ( is_home() || is_front_page() ) {
+
+		if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
+
+	} else {
+
+		$position = 0;
+
+		echo $wrap_before;
+
+		if ( $show_home_link ) {
+			$position += 1;
+			echo $home_link;
+		}
+
+		if ( is_category() ) {
+			$parents = get_ancestors( get_query_var('cat'), 'category' );
+			foreach ( array_reverse( $parents ) as $cat ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+			}
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				$cat = get_query_var('cat');
+				echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_current ) {
+					if ( $position >= 1 ) echo $sep;
+					echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
+				} elseif ( $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_search() ) {
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				if ( $show_home_link ) echo $sep;
+				echo sprintf( $link, $home_url . '?s=' . get_search_query(), sprintf( $text['search'], get_search_query() ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_current ) {
+					if ( $position >= 1 ) echo $sep;
+					echo $before . sprintf( $text['search'], get_search_query() ) . $after;
+				} elseif ( $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_year() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . get_the_time('Y') . $after;
+			elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+		} elseif ( is_month() ) {
+			if ( $show_home_link ) echo $sep;
+			$position += 1;
+			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
+			if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_day() ) {
+			if ( $show_home_link ) echo $sep;
+			$position += 1;
+			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
+			$position += 1;
+			echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
+			if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_single() && ! is_attachment() ) {
+			if ( get_post_type() != 'post' ) {
+				$position += 1;
+				$post_type = get_post_type_object( get_post_type() );
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
+				if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+				elseif ( $show_last_sep ) echo $sep;
+			} else {
+				$cat = get_the_category(); $catID = $cat[0]->cat_ID;
+				$parents = get_ancestors( $catID, 'category' );
+				$parents = array_reverse( $parents );
+				$parents[] = $catID;
+				foreach ( $parents as $cat ) {
+					$position += 1;
+					if ( $position > 1 ) echo $sep;
+					echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+				}
+				if ( get_query_var( 'cpage' ) ) {
+					$position += 1;
+					echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
+					echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
+				} else {
+					if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+					elseif ( $show_last_sep ) echo $sep;
+				}
+			}
+
+		} elseif ( is_post_type_archive() ) {
+			$post_type = get_post_type_object( get_post_type() );
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . $post_type->label . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_attachment() ) {
+			$parent = get_post( $parent_id );
+			$cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
+			$parents = get_ancestors( $catID, 'category' );
+			$parents = array_reverse( $parents );
+			$parents[] = $catID;
+			foreach ( $parents as $cat ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+			}
+			$position += 1;
+			echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
+			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_page() && ! $parent_id ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . get_the_title() . $after;
+			elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+		} elseif ( is_page() && $parent_id ) {
+			$parents = get_post_ancestors( get_the_ID() );
+			foreach ( array_reverse( $parents ) as $pageID ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
+			}
+			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_tag() ) {
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				$tagID = get_query_var( 'tag_id' );
+				echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_author() ) {
+			$author = get_userdata( get_query_var( 'author' ) );
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_404() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . $text['404'] . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( has_post_format() && ! is_singular() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			echo get_post_format_string( get_post_format() );
+		}
+
+		echo $wrap_after;
+
+	}
+} // end of the_breadcrumbs()
